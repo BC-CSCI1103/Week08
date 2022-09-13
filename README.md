@@ -1,6 +1,6 @@
 #  CSCI 1103 Computer Science 1 Honors
 
-## Fall 2020
+## Fall 2022
 
 Robert Muller - Boston College
 
@@ -282,6 +282,8 @@ In the examples above, we had a sequence or *block* of numbers terminated with a
 data = [5, 30, 40, 50, 60, 70]
 ```
 
+##### Sequential Access
+
 ##### Exercise: Write an SVM program to index through the block, placing each value 30, ..., 70 in R0.
 
 ```assembly
@@ -298,6 +300,18 @@ Add  R1, R1, R0    # i := i + 1;
 Jmp  -8
 R
 ```
+
+##### Randoml Access
+
+Because addresses are natural numbers, we can compute addresses using the arithmetic instructions `Add`, `Sub`, `Mul` and `Div.` Lets call the block in the above example `a` and assume that we want to load the *i*th element of `a` into `R0`. This is usually written as `a[i]`, in OCaml it is written `a.(i)`. We'll assume the word index `i` is contained in `R3`.
+
+```assembly
+  Mov R1, Zero
+  Add R1, R1, R3    # R1 has the address of the word before a[i]
+  Lod R0, 1(R1)     # R0 := a[i], NB: the 1 in 1(R1) skips over the size word
+```
+
+The `Add` instruction provides access to the *ith* element in one instruction cycle!
 
 ##### Linked Allocation
 
