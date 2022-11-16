@@ -8,7 +8,7 @@ Robert Muller - Boston College
 
 ## Lecture Notes
 
-## Week 8: A Simple Virtual Machine
+## Week 10: A Simple Virtual Machine
 
 **Topics:**
 
